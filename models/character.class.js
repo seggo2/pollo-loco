@@ -10,7 +10,7 @@ class character extends MovableObject {
         ' img/2_character_pepe/2_walk/W-25.png',
         ' img/2_character_pepe/2_walk/W-26.png',
     ];
-   
+
 
 
     constructor() {
@@ -21,7 +21,8 @@ class character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            let i= this.currentimage % this.images_walking.length;
+            let i = this.currentimage % this.images_walking.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
+            /////////////////////////////////////////////////////////wieder auf 0 springt es ist eine mathematische formel
             let path = this.images_walking[i];
             this.img = this.imagecache[path];
             this.currentimage++;

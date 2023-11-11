@@ -28,8 +28,8 @@ class World {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         //////////////
-        this.addObjectsToMap(this.backgroundObject)
         this.addToMap(this.characters)
+        this.addObjectsToMap(this.backgroundObject)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
 
