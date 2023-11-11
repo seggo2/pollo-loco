@@ -1,7 +1,11 @@
 class character extends MovableObject {
+
     height = 250;
+
     width = 100;
+
     y = 180;
+
     images_walking = [
         ' img/2_character_pepe/2_walk/W-21.png',
         ' img/2_character_pepe/2_walk/W-22.png',
@@ -11,6 +15,7 @@ class character extends MovableObject {
         ' img/2_character_pepe/2_walk/W-26.png',
     ];
 
+    World;
 
 
     constructor() {
@@ -19,17 +24,22 @@ class character extends MovableObject {
         this.animate();
     }
 
+
     animate() {
         setInterval(() => {
-            let i = this.currentimage % this.images_walking.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
-            /////////////////////////////////////////////////////////wieder auf 0 springt es ist eine mathematische formel
-            let path = this.images_walking[i];
-            this.img = this.imagecache[path];
-            this.currentimage++;
-        }, 200);
-    }
 
-    jump() {
+            if (this.World.keyboard.right) {
+                let i = this.currentimage % this.images_walking.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
+                /////////////////////////////////////////////////////////wieder auf 0 springt es ist eine mathematische formel
+                let path = this.images_walking[i];
+                this.img = this.imagecache[path];
+                this.currentimage++;
+            }
+        }, 100);
+}
 
-    }
+
+jump() {
+
+}
 }
