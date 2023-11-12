@@ -2,22 +2,11 @@ class World {
 
     character = new character();
 
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-    ];
+    enemies = level1.enemies;
 
-    clouds = [
-        new Cloud()
-    ]
+    clouds = level1.clouds;
 
-    backgroundObject = [
-        new BackgroundObject('img/5_background/layers/air.png', 0),
-        new BackgroundObject('img/5_background/layers/3_third_layer/1.png', 0),
-        new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 0),
-        new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 0),
-    ]
+    backgroundObject = level1.backgroundObject;
 
     canvas;
 
@@ -25,6 +14,7 @@ class World {
 
     keyboard;
 
+    camera_x = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -44,10 +34,16 @@ class World {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         //////////////
+
+        this.ctx.translate(this.camera_x, 0)//für die camera verfolgung
+
         this.addObjectsToMap(this.backgroundObject)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
         this.addToMap(this.character)
+
+        this.ctx.translate(-this.camera_x, 0) //für die camera verfolgung
+
         //draw() wird immer wieder aufgerufen 
         let self = this;
         requestAnimationFrame(function () {
