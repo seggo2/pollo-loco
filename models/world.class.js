@@ -2,11 +2,7 @@ class World {
 
     character = new character();
 
-    enemies = level1.enemies;
-
-    clouds = level1.clouds;
-
-    backgroundObject = level1.backgroundObject;
+    level=level1;
 
     canvas;
 
@@ -37,9 +33,9 @@ class World {
 
         this.ctx.translate(this.camera_x, 0)//für die camera verfolgung
 
-        this.addObjectsToMap(this.backgroundObject)
-        this.addObjectsToMap(this.clouds)
-        this.addObjectsToMap(this.enemies)
+        this.addObjectsToMap(this.level.backgroundObject)
+        this.addObjectsToMap(this.level.clouds)
+        this.addObjectsToMap(this.level.enemies)
         this.addToMap(this.character)
 
         this.ctx.translate(-this.camera_x, 0) //für die camera verfolgung

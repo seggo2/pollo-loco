@@ -27,15 +27,15 @@ class character extends MovableObject {
 
     animate() {
         setInterval(() => {//laufen character
-            if (this.World.keyboard.right) {
+            if (this.World.keyboard.right && this.x < this.World.level. level_end_x) {
                 this.x += this.speed;
                 this.otherDirection=false;
             }
-            if (this.World.keyboard.left) {
+            if (this.World.keyboard.left && this.x >-500 ) {
                 this.x -= this.speed;
                 this.otherDirection=true;
             }
-            this.World.camera_x =-this.x;
+            this.World.camera_x =-this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
