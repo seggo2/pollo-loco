@@ -16,6 +16,7 @@ class MovableObject {
 
     speed = 0.15;
 
+    otherDirection= false;
 
     loadImage(path) {
         this.img = new Image();
