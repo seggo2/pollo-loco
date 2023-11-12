@@ -17,6 +17,7 @@ class character extends MovableObject {
 
     World;
 
+    walking_Sound = new Audio('audio/footstep.mp3')
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png')
@@ -27,13 +28,16 @@ class character extends MovableObject {
 
     animate() {
         setInterval(() => {//laufen character
+            this.walking_Sound.pause();
             if (this.World.keyboard.right && this.x < this.World.level. level_end_x) {
                 this.x += this.speed;
                 this.otherDirection=false;
+                this.walking_Sound.play();
             }
             if (this.World.keyboard.left && this.x >-500 ) {
                 this.x -= this.speed;
                 this.otherDirection=true;
+                this.walking_Sound.play();
             }
             this.World.camera_x =-this.x + 100;
         }, 1000 / 60);
@@ -41,11 +45,7 @@ class character extends MovableObject {
         setInterval(() => {
 
             if (this.World.keyboard.right || this.World.keyboard.left) {
-                let i = this.currentimage % this.images_walking.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
-                /////////////////////////////////////////////////////////wieder auf 0 springt es ist eine mathematische formel
-                let path = this.images_walking[i];
-                this.img = this.imagecache[path];
-                this.currentimage++;
+              this.playAnimation(this.images_walking)
             }
         }, 40);
     }
