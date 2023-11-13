@@ -15,6 +15,19 @@ class character extends MovableObject {
         ' img/2_character_pepe/2_walk/W-26.png',
     ];
 
+    images_jump = [
+        ' img/2_character_pepe/3_jump/J-31.png',
+        ' img/2_character_pepe/3_jump/J-32.png',
+        ' img/2_character_pepe/3_jump/J-33.png',
+        ' img/2_character_pepe/3_jump/J-34.png',
+        ' img/2_character_pepe/3_jump/J-35.png',
+        ' img/2_character_pepe/3_jump/J-36.png',
+        ' img/2_character_pepe/3_jump/J-37.png',
+        ' img/2_character_pepe/3_jump/J-38.png',
+        ' img/2_character_pepe/3_jump/J-39.png',
+        ' img/2_character_pepe/3_jump/J-40.png',
+    ];
+
     World;
 
     walking_Sound = new Audio('audio/footstep.mp3')
@@ -22,6 +35,7 @@ class character extends MovableObject {
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png')
         this.loadImages(this.images_walking);
+        this.loadImages(this.images_jump);
         this.applyGravity();
         this.animate();
     }
@@ -30,25 +44,30 @@ class character extends MovableObject {
     animate() {
         setInterval(() => {//laufen character
             this.walking_Sound.pause();
-            if (this.World.keyboard.right && this.x < this.World.level. level_end_x) {
+            if (this.World.keyboard.right && this.x < this.World.level.level_end_x) {
                 this.x += this.speed;
-                this.otherDirection=false;
+                this.otherDirection = false;
                 this.walking_Sound.play();
             }
-            if (this.World.keyboard.left && this.x >-500 ) {
+            if (this.World.keyboard.left && this.x > -500) {
                 this.x -= this.speed;
-                this.otherDirection=true;
+                this.otherDirection = true;
                 this.walking_Sound.play();
             }
-            this.World.camera_x =-this.x + 100;
+            this.World.camera_x = -this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
+            if (this.isAboveGround()) {
+                this.playAnimation(this.images_jump)
+            } else {
 
-            if (this.World.keyboard.right || this.World.keyboard.left) {
-              this.playAnimation(this.images_walking)
+                if (this.World.keyboard.right || this.World.keyboard.left) {
+                    this.playAnimation(this.images_walking)
+                }
             }
-        }, 40);
+            }, 60);
+        
     }
 
 
