@@ -20,12 +20,12 @@ class MovableObject {
 
     speedY = 0;
 
-    acceleration = 0.5;
+    acceleration = 1;
 
 
     applyGravity() {//gravitaiton beim springen fallen etc...
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
@@ -63,13 +63,16 @@ class MovableObject {
 
 
     moveRight() {
-
+        this.x += this.speed;
+        this.otherDirection = false;
     }
 
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60)
+        this.x -= this.speed;
+    }
+
+    jump() {
+        this.speedY = 20;
     }
 }

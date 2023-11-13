@@ -1,10 +1,12 @@
 class character extends MovableObject {
 
     height = 250;
+
     speed = 4;
+
     width = 100;
 
-    y = 80;
+    y = 180;
 
     images_walking = [
         ' img/2_character_pepe/2_walk/W-21.png',
@@ -25,7 +27,6 @@ class character extends MovableObject {
         ' img/2_character_pepe/3_jump/J-37.png',
         ' img/2_character_pepe/3_jump/J-38.png',
         ' img/2_character_pepe/3_jump/J-39.png',
-        ' img/2_character_pepe/3_jump/J-40.png',
     ];
 
     World;
@@ -45,33 +46,34 @@ class character extends MovableObject {
         setInterval(() => {//laufen character
             this.walking_Sound.pause();
             if (this.World.keyboard.right && this.x < this.World.level.level_end_x) {
-                this.x += this.speed;
-                this.otherDirection = false;
+                this.moveRight();
                 this.walking_Sound.play();
             }
             if (this.World.keyboard.left && this.x > -500) {
-                this.x -= this.speed;
+                this.moveLeft();
                 this.otherDirection = true;
                 this.walking_Sound.play();
             }
+
+            if (this.World.keyboard.space && !this.isAboveGround()) {
+                this.jump();
+            }
+
             this.World.camera_x = -this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
             if (this.isAboveGround()) {
                 this.playAnimation(this.images_jump)
+
             } else {
 
                 if (this.World.keyboard.right || this.World.keyboard.left) {
                     this.playAnimation(this.images_walking)
                 }
             }
-            }, 60);
-        
-    }
-
-
-    jump() {
+        }, 60);
 
     }
+
 }
