@@ -18,6 +18,27 @@ class MovableObject {
 
     otherDirection = false;
 
+    speedY = 0;
+
+    acceleration = 0.5;
+
+
+    applyGravity() {//gravitaiton beim springen fallen etc...
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
+
+        }, 1000 / 60);
+    }
+
+
+    isAboveGround() {
+        return this.y < 180
+    }
+
+
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -32,7 +53,7 @@ class MovableObject {
         });
     }
 
-    playAnimation(images){
+    playAnimation(images) {
         let i = this.currentimage % this.images_walking.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
         /////////////////////////////////////////////////////////wieder auf 0 springt es ist eine mathematische formel
         let path = images[i];
