@@ -8,6 +8,8 @@ class character extends MovableObject {
 
     y = 180;
 
+    energy = 100;
+
     images_walking = [
         ' img/2_character_pepe/2_walk/W-21.png',
         ' img/2_character_pepe/2_walk/W-22.png',
