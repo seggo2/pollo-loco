@@ -49,7 +49,7 @@ class character extends MovableObject {
                 this.moveRight();
                 this.walking_Sound.play();
             }
-            if (this.World.keyboard.left && this.x > -500) {
+            if (this.World.keyboard.left && this.x > -0) {
                 this.moveLeft();
                 this.otherDirection = true;
                 this.walking_Sound.play();

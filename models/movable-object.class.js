@@ -45,6 +45,25 @@ class MovableObject {
     }
 
 
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+
+    }
+
+
+    drawFrame(ctx) {
+        //hitbox//
+        if (this instanceof character || this instanceof Chicken || this instanceof Endboss) {
+            ctx.beginPath();//
+            ctx.lineWidth = "3";//
+            ctx.strokeStyle = "blue";//
+            ctx.rect(this.x, this.y, this.width, this.height);//
+            ctx.stroke();//
+        }
+        //hitbox//
+    }
+
+
     loadImages(arr) {
         arr.forEach(path => {
             let img = new Image();
@@ -52,6 +71,7 @@ class MovableObject {
             this.imagecache[path] = img;
         });
     }
+
 
     playAnimation(images) {
         let i = this.currentimage % this.images_walking.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
