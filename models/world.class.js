@@ -1,16 +1,12 @@
 class World {
 
     character = new character();
-
     level = level1;
-
     canvas;
-
     ctx;
-
     keyboard;
-
     camera_x = 0;
+    statusBar = new statusbar();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -21,22 +17,20 @@ class World {
         this.checkCollisions();
     }
 
-
     setWorld() {
         this.character.World = this;
     }
-
 
     checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
+                    this.statusBar.setpercentage(this.character.energy);
                 }
             })
         }, 100);
     }
-
 
     draw() {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
@@ -48,6 +42,13 @@ class World {
         this.addObjectsToMap(this.level.backgroundObject)
         this.addObjectsToMap(this.level.clouds)
         this.addObjectsToMap(this.level.enemies)
+
+
+        this.ctx.translate(-this.camera_x, 0)
+        this.addToMap(this.statusBar)
+        this.ctx.translate(this.camera_x, 0)
+        
+
         this.addToMap(this.character)
 
         this.ctx.translate(-this.camera_x, 0) //für die camera verfolgung
@@ -59,13 +60,11 @@ class World {
         });
     }
 
-
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o)
         });
     }
-
 
     addToMap(mo) {
         if (mo.otherDirection) {
@@ -78,12 +77,10 @@ class World {
         }
     }
 
-
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
-
 
     flipImage(mo) {
         this.ctx.save();

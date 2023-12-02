@@ -1,27 +1,9 @@
-class MovableObject {
-
-    x = 120;
-
-    y = 250;
-
-    height = 150;
-
-    width = 100;
-
-    img;
-
-    imagecache = {};
-
-    currentimage = 0;
+class MovableObject extends drawableobject{
 
     speed = 0.15;
-
     otherDirection = false;
-
     speedY = 0;
-
     acceleration = 1;
-
     lastHit = 0;
 
     applyGravity() {//gravitaiton beim springen fallen etc...
@@ -34,36 +16,9 @@ class MovableObject {
         }, 1000 / 60);
     }
 
-
     isAboveGround() {
         return this.y < 180
     }
-
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-
-    }
-
-
-    drawFrame(ctx) {
-        //hitbox//
-        if (this instanceof character || this instanceof Chicken || this instanceof Endboss) {
-            ctx.beginPath();//
-            ctx.lineWidth = "3";//
-            ctx.strokeStyle = "blue";//
-            ctx.rect(this.x, this.y, this.width, this.height);//
-            ctx.stroke();//
-        }
-        //hitbox//
-    }
-
 
     hit() {
         this.energy -= 5;
@@ -74,13 +29,11 @@ class MovableObject {
         }
     }
 
-
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;// zeit difference in ms seit dem letztem treffer
         timepassed = timepassed / 1000; // ms in sekunden umrechnen
         return timepassed < 1;
     }
-
 
     isDead() {
         return this.energy == 0;
@@ -93,16 +46,6 @@ class MovableObject {
             this.y < mo.y + mo.height
     }
 
-
-    loadImages(arr) {
-        arr.forEach(path => {
-            let img = new Image();
-            img.src = path;
-            this.imagecache[path] = img;
-        });
-    }
-
-
     playAnimation(images) {
         let i = this.currentimage % images.length;// das % wird modulu genannt welches dafür sorgt das wen das bild 5 erreicht hat -
         /////////////////////////////////////////////////////////wieder auf 0 springt es ist eine mathematische formel
@@ -111,12 +54,10 @@ class MovableObject {
         this.currentimage++;
     }
 
-
     moveRight() {
         this.x += this.speed;
         this.otherDirection = false;
     }
-
 
     moveLeft() {
         this.x -= this.speed;
