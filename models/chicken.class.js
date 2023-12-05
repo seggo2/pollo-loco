@@ -5,6 +5,7 @@ class Chicken extends MovableObject {
 
     height = 80;
 
+    chicken_sound=new Audio('audio/chicken.mp3');
 
     images_walking = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
@@ -20,6 +21,7 @@ class Chicken extends MovableObject {
         this.x = 400 + Math.random() * 500;
         this.speed = 0.2 + Math.random() * 0.5;
         this.animate()
+        // this.chicken_sound.play();
     }
 
 

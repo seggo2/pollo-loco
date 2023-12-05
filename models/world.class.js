@@ -7,7 +7,8 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new statusbar();
-    throwableObject =[];
+    throwableObject = [];
+    background_sound = new Audio('audio/background.mp3')
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -24,21 +25,21 @@ class World {
 
     run() {
         setInterval(() => {
-          this.checkcollisions()
-          this.checkThrowObject()
+            this.checkcollisions()
+            this.checkThrowObject()
         }, 100);
     }
 
-    checkThrowObject(){
+    checkThrowObject() {
         if (this.keyboard.d) {
             console.log('ist gedrückt ')
-            let bottle= new ThrowableObject(this.character.x+100 ,this.character.y +100)
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
             this.throwableObject.push(bottle);
         }
     }
 
-    checkcollisions(){
-           this.level.enemies.forEach((enemy) => {
+    checkcollisions() {
+        this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setpercentage(this.character.energy);
@@ -49,7 +50,8 @@ class World {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         //////////////
-
+        // this.background_sound.play();
+        //////////////
         this.ctx.translate(this.camera_x, 0)//für die camera verfolgung
 
         this.addObjectsToMap(this.level.backgroundObject)
@@ -57,11 +59,11 @@ class World {
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.throwableObject)
 
-
+        //fir not movable things
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.statusBar)
         this.ctx.translate(this.camera_x, 0)
-        
+        /////////////
 
         this.addToMap(this.character)
 
