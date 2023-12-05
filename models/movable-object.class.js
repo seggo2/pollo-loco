@@ -1,4 +1,4 @@
-class MovableObject extends drawableobject{
+class MovableObject extends drawableobject {
 
     speed = 0.15;
     otherDirection = false;
@@ -17,7 +17,11 @@ class MovableObject extends drawableobject{
     }
 
     isAboveGround() {
-        return this.y < 180
+        if (this instanceof ThrowableObject) {
+            return true
+        } else {
+            return this.y < 180
+        }
     }
 
     hit() {

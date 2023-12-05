@@ -7,6 +7,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new statusbar();
+    throwableObject =[];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -14,24 +15,36 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld() {
         this.character.World = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBar.setpercentage(this.character.energy);
-                }
-            })
+          this.checkcollisions()
+          this.checkThrowObject()
         }, 100);
     }
 
+    checkThrowObject(){
+        if (this.keyboard.d) {
+            console.log('ist gedrückt ')
+            let bottle= new ThrowableObject(this.character.x+100 ,this.character.y +100)
+            this.throwableObject.push(bottle);
+        }
+    }
+
+    checkcollisions(){
+           this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBar.setpercentage(this.character.energy);
+            }
+        })
+    }
     draw() {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -42,6 +55,7 @@ class World {
         this.addObjectsToMap(this.level.backgroundObject)
         this.addObjectsToMap(this.level.clouds)
         this.addObjectsToMap(this.level.enemies)
+        this.addObjectsToMap(this.throwableObject)
 
 
         this.ctx.translate(-this.camera_x, 0)
