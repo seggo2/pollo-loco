@@ -1,6 +1,6 @@
 class statusbar extends drawableobject {
 
-    IMAGES = [
+    IMAGES_health = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png',
         'img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png',
         'img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png',
@@ -9,37 +9,40 @@ class statusbar extends drawableobject {
         'img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png',
     ]
 
-    percentage = 100 ;
+    percentage_health = 100;
 
     constructor() {
         super();
-        this.loadImages(this.IMAGES);
-        this.x=40;
-        this.y=0;
-        this.width=200;
-        this.height=60;
-        this.setpercentage(100);
+        this.loadImages(this.IMAGES_health);
+        this.setpercentage_health(100);
+        this.y = 0;
+        this.x = 20;
+        this.width = 200;
+        this.height = 60;
     }
-
-    setpercentage(percentage) {
-        this.percentage = percentage;
-        let path = this.IMAGES[this.resolveImageIndex()];
+    
+    setpercentage_health(percentage_health) {
+        this.percentage_health = percentage_health;
+        let path = this.IMAGES_health[this.resolveImageIndex_health()];
         this.img = this.imagecache[path];
     }
 
-    resolveImageIndex(){
-        if (this.percentage==100) {
+    resolveImageIndex_health() {
+        if (this.percentage_health == 100) {
             return 5;
-        }else if (this.percentage >80) {
+        } else if (this.percentage_health > 80) {
             return 4;
-        }else if (this.percentage >60) {
+        } else if (this.percentage_health > 60) {
             return 3;
-        }else if (this.percentage >40) {
+        } else if (this.percentage_health > 40) {
             return 2;
-        }else if (this.percentage >20) {
+        } else if (this.percentage_health > 20) {
             return 1;
-        }else {(this.percentage ==0) 
+        } else {
+            (this.percentage_health == 0)
             return 0;
         }
     }
+
 }
+

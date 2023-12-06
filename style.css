@@ -3,8 +3,25 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
+    background-image: url('img/ai-generated-8213401_1920.jpg');
 }
 
 canvas{
     background-color: black;
+}
+
+.fullscreen img{
+    height: 25px;
+    cursor: pointer;
+}
+.fullscreen{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#fullscreen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

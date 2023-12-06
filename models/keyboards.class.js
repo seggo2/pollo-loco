@@ -5,5 +5,4 @@ class keyboard {
     down = false;
     space = false;
     d = false;
-
 }
