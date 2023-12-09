@@ -6,12 +6,13 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    collectable_bottle = new collectable();
     statusBar = new statusbar();
     coinbar = new coinbar();
     bottlebar = new bottlebar();
-    bottle = new ThrowableObject()
+    bottle = new ThrowableObject();
     throwableObject = [];
-    background_sound = new Audio('audio/background.mp3')
+    background_sound = new Audio('audio/background.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -36,7 +37,7 @@ class World {
     checkThrowObject() {
         if (this.keyboard.d) {
             if (this.keyboard.left) {
-                
+
             } else {
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
                 this.throwableObject.push(bottle);
@@ -62,6 +63,7 @@ class World {
         this.addObjectsToMap(this.level.clouds)
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.throwableObject)
+        this.addToMap(this.collectable_bottle);
 
         //fir not movable things
         this.ctx.translate(-this.camera_x, 0)
