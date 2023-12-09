@@ -5,6 +5,7 @@ class MovableObject extends drawableobject {
     speedY = 0;
     acceleration = 1;
     lastHit = 0;
+   
 
     applyGravity() {//gravitaiton beim springen fallen etc...
         setInterval(() => {

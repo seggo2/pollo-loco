@@ -15,8 +15,6 @@ class bottlebar extends statusbar{
         this.setpercentage_bottle(0);
         this.y = 90;
         this.x = 20;
-        this.width = 200;
-        this.height = 60;
     }
 
     setpercentage_bottle(percentage_bottle) {

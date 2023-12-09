@@ -7,8 +7,9 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new statusbar();
-    coinbar= new coinbar();
-    bottlebar= new bottlebar();
+    coinbar = new coinbar();
+    bottlebar = new bottlebar();
+    bottle = new ThrowableObject()
     throwableObject = [];
     background_sound = new Audio('audio/background.mp3')
 
@@ -34,8 +35,12 @@ class World {
 
     checkThrowObject() {
         if (this.keyboard.d) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
-            this.throwableObject.push(bottle);
+            if (this.keyboard.left) {
+                
+            } else {
+                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
+                this.throwableObject.push(bottle);
+            }
         }
     }
 
@@ -50,7 +55,7 @@ class World {
     draw() {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        
+
         this.ctx.translate(this.camera_x, 0)//für die camera verfolgung
 
         this.addObjectsToMap(this.level.backgroundObject)

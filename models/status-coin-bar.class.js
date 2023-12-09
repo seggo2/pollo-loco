@@ -14,8 +14,6 @@ class coinbar extends statusbar {
         super();
         this.loadImages(this.images_coin)
         this.setpercentage_coin(0);
-        this.width = 200;
-        this.height = 60;
         this.x=20;
         this.y=45;
     }
