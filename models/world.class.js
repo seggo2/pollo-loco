@@ -6,11 +6,9 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    collectable_bottle = new collectable();
     statusBar = new statusbar();
     coinbar = new coinbar();
     bottlebar = new bottlebar();
-    bottle = new ThrowableObject();
     throwableObject = [];
     background_sound = new Audio('audio/background.mp3');
 
@@ -33,6 +31,12 @@ class World {
             this.checkThrowObject()
         }, 100);
     }
+    
+    throw() {
+        setInterval(() => {
+            this.checkcollisions_salsa_throw()
+        }, 100);
+    }
 
     checkThrowObject() {
         if (this.keyboard.d) {
@@ -41,8 +45,18 @@ class World {
             } else {
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
                 this.throwableObject.push(bottle);
+                this.throw()
             }
         }
+    }
+
+    checkcollisions_salsa_throw() {
+        this.throwableObject.forEach((bottle) => {
+            if ( this.level.enemies[0].isColliding(bottle)) {
+                this.level.enemies[0].hit();
+                console.log('is collading')
+            }
+        })
     }
 
     checkcollisions() {
@@ -62,8 +76,9 @@ class World {
         this.addObjectsToMap(this.level.backgroundObject)
         this.addObjectsToMap(this.level.clouds)
         this.addObjectsToMap(this.level.enemies)
+        this.addObjectsToMap(this.level.collectable)
         this.addObjectsToMap(this.throwableObject)
-        this.addToMap(this.collectable_bottle);
+        
 
         //fir not movable things
         this.ctx.translate(-this.camera_x, 0)
