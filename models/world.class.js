@@ -31,7 +31,7 @@ class World {
             this.checkThrowObject()
         }, 100);
     }
-    
+
     throw() {
         setInterval(() => {
             this.checkcollisions_salsa_throw()
@@ -52,10 +52,11 @@ class World {
 
     checkcollisions_salsa_throw() {
         this.throwableObject.forEach((bottle) => {
-            if ( this.level.enemies[0].isColliding(bottle)) {
-                this.level.enemies[0].hit();
-                console.log('is collading')
-            }
+            this.level.enemies.forEach((enemy) => {
+                if (enemy.isColliding(bottle)) {
+                    enemy.hit();
+                }
+            })
         })
     }
 
@@ -78,7 +79,7 @@ class World {
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.level.collectable)
         this.addObjectsToMap(this.throwableObject)
-        
+
 
         //fir not movable things
         this.ctx.translate(-this.camera_x, 0)
