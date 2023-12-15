@@ -20,7 +20,7 @@ class drawableobject {
 
     drawFrame(ctx) {
         //hitbox//
-        if (this instanceof character || this instanceof Chicken || this instanceof Endboss) {
+        if (this instanceof character  || this instanceof collectable) {
             ctx.beginPath();//
             ctx.lineWidth = "3";//
             ctx.strokeStyle = "blue";//
