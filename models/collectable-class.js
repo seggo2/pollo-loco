@@ -1,7 +1,8 @@
-class collectable extends drawableobject{
+class collectable extends drawableobject {
     IMAGES_bottle = [
         'img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
     ]
+    
     constructor() {
         super();
         this.loadImage(this.IMAGES_bottle);
