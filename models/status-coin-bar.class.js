@@ -1,4 +1,4 @@
-class coinbar extends statusbar {
+class coinbar extends drawableobject {
     images_coin = [
         'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png',
         'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png',
@@ -14,12 +14,14 @@ class coinbar extends statusbar {
         super();
         this.loadImages(this.images_coin)
         this.setpercentage_coin(0);
-        this.x=20;
-        this.y=45;
+        this.x = 20;
+        this.y = 45;
+        this.width = 200;
+        this.height = 60;
     }
 
     setpercentage_coin(percentage_coin) {
-        this.percentage_coin = percentage_coin;
+        this.percentage_coin += percentage_coin;
         let path = this.images_coin[this.resolveImageIndex_coin()];
         this.img = this.imagecache[path];
     }
