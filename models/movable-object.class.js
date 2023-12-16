@@ -5,7 +5,7 @@ class MovableObject extends drawableobject {
     speedY = 0;
     acceleration = 1;
     lastHit = 0;
-   
+
 
     applyGravity() {//gravitaiton beim springen fallen etc...
         setInterval(() => {
@@ -13,7 +13,7 @@ class MovableObject extends drawableobject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-        
+
 
         }, 1000 / 60);
     }
@@ -27,12 +27,12 @@ class MovableObject extends drawableobject {
     }
 
     hit() {
-        this.energy -= 5;
-        if (this.energy < 0) {
-            this.energy = 0;
-        } else {
-            this.lastHit = new Date().getTime();
-        }
+            this.energy -= 5;
+            if (this.energy < 0) {
+                this.energy = 0;
+            } else {
+                this.lastHit = new Date().getTime();
+            }
     }
 
     isHurt() {
@@ -70,6 +70,6 @@ class MovableObject extends drawableobject {
     }
 
     jump() {
-        this.speedY = 20;
+        this.speedY = 25;
     }
 }

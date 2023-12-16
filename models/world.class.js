@@ -43,7 +43,7 @@ class World {
 
     checkThrowObject() {
         if (this.keyboard.d && this.bottlebar.percentage_bottle > 10) {
-            if (this.keyboard.left) {
+            if (this.character.otherDirection == true) {
 
             } else {
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
@@ -58,8 +58,8 @@ class World {
         this.throwableObject.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
-                    this.bottle_collision.play()
-                    enemy.hit();
+                    bottle.splashed = true;
+                    enemy.hit()
                 }
             })
         })

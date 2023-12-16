@@ -2,7 +2,7 @@ class character extends MovableObject {
 
     height = 250;
 
-    speed = 4;
+    speed = 5;
 
     width = 100;
 
