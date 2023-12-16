@@ -59,6 +59,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     bottle.splashed = true;
+                    this.bottle_collision.play();
                     enemy.hit()
                 }
             })

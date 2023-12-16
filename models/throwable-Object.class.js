@@ -29,24 +29,24 @@ class ThrowableObject extends MovableObject {
         this.height = 80;
         this.width = 80;
         this.throw();
-        this.animate();
+        // this.animate();
     }
     throw() {
         this.throw_sound.play();
         this.speedY = 10;
         this.applyGravity();
         setInterval(() => {
-            this.playAnimation(this.salsa_Image)
-            this.x += 20;
-        }, 25);
-    }
-    animate() {
-        setInterval(() => {
             if (this.splashed == true) {
                 this.playAnimation(this.salsa_splash)
+                this.playAnimation(this.salsa_splash)
+                this.playAnimation(this.salsa_splash)
+                this.speedY+=1;
+                this.x+=0;
+                this.splashed = false
             } else {
-    
+                this.playAnimation(this.salsa_Image)
+                this.x += 20;
             }
-        }, 60);
+        }, 25);
     }
 }
