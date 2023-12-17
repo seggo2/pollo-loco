@@ -18,17 +18,18 @@ class drawableobject {
 
     }
 
-    // drawFrame(ctx) {
-    //     //hitbox//
-    //     if (this instanceof character  || this instanceof collectable) {
-    //         ctx.beginPath();//
-    //         ctx.lineWidth = "3";//
-    //         ctx.strokeStyle = "blue";//
-    //         ctx.rect(this.x, this.y, this.width, this.height);//
-    //         ctx.stroke();//
-    //     }
-    //     //hitbox//
-    // }
+    drawFrame(ctx) {
+        //hitbox//
+        if (this instanceof character  || this instanceof collectable) {
+            ctx.beginPath();//
+            ctx.lineWidth = "3";//
+            ctx.strokeStyle = "blue";//
+            ctx.rect(this.x, this.y, this.width, this.height);//
+            ctx.rect(this.offset.top, this.offset.y, this.offset.width, this.offset.height);
+            ctx.stroke();//
+        }
+        //hitbox//
+    }
 
     loadImages(arr) {
         arr.forEach(path => {

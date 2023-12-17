@@ -91,6 +91,7 @@ class World {
             }
         })
     }
+    
     draw() {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -135,7 +136,7 @@ class World {
             this.flipImage(mo);
         }
         mo.draw(this.ctx);
-        // mo.drawFrame(this.ctx);//for hitbox
+        mo.drawFrame(this.ctx);//for hitbox
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }

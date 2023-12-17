@@ -2,7 +2,13 @@ class collectable extends drawableobject {
     IMAGES_bottle = [
         'img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
     ]
-    
+    offset={
+        top:0,
+        bottom:0,
+        left:0,
+        right:0,
+    };
+
     constructor() {
         super();
         this.loadImage(this.IMAGES_bottle);
