@@ -4,10 +4,10 @@ class collectable_coin extends drawableobject {
     ]
 
     offset={
-        top:0,
-        bottom:0,
-        left:0,
-        right:0,
+        top:50,
+        bottom:100,
+        left:20,
+        right:40,
     };
     
     constructor() {

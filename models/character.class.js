@@ -48,10 +48,10 @@ class character extends MovableObject {
     ];
 
     offset={
-        top:120,
-        bottom:30,
-        left:40,
-        right:30,
+        top:100,
+        bottom:70,
+        left:20,
+        right:50,
     };
 
     World;

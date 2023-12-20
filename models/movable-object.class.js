@@ -5,6 +5,7 @@ class MovableObject extends drawableobject {
     speedY = 0;
     acceleration = 1;
     lastHit = 0;
+    
     offset={
         top:0,
         bottom:0,

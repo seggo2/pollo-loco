@@ -12,6 +12,7 @@ class World {
     coinbar = new coinbar();
     bottlebar = new bottlebar();
     throwableObject = [];
+    throwtime = null;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -42,14 +43,21 @@ class World {
     }
 
     checkThrowObject() {
+        let atackTime = new Date().getTime();
+        let atackSpeed = (atackTime - this.throwtime) / 1000;
         if (this.keyboard.d && this.bottlebar.percentage_bottle > 10) {
             if (this.character.otherDirection == true) {
 
             } else {
-                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
-                this.throwableObject.push(bottle);
-                this.throw()
-                this.bottlebar.setpercentage_bottle(-10)
+                if (atackSpeed > 0.6 || this.throwtime == null) {
+                    let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
+                    this.throwableObject.push(bottle);
+                    this.throw()
+                    this.bottlebar.setpercentage_bottle(-10)
+                    this.throwtime = new Date().getTime();
+                } else {
+
+                }
             }
         }
     }
@@ -96,7 +104,7 @@ class World {
             }
         })
     }
-    
+
     draw() {
         ///////zum clearen vom canvis am anfang sonst würden sich die bilder doppelt dreifach anzeigen
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -141,7 +149,7 @@ class World {
             this.flipImage(mo);
         }
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);//for hitbox
+        // mo.drawFrame(this.ctx);//for hitbox
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }
