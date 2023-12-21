@@ -47,11 +47,11 @@ class character extends MovableObject {
         'img/2_character_pepe/4_hurt/H-43.png',
     ];
 
-    offset={
-        top:100,
-        bottom:70,
-        left:20,
-        right:50,
+    offset = {
+        top: 100,
+        bottom: 70,
+        left: 20,
+        right: 50,
     };
 
     World;
@@ -71,6 +71,12 @@ class character extends MovableObject {
 
 
     animate() {
+        setInterval(() => {
+            if (this.x > 1800 && !this.World.endboss.hadFirstContact) {
+                this.World.endboss.hadFirstContact = true;
+            }
+        }, 1000 / 60)
+
         setInterval(() => {//laufen character
             this.walking_Sound.pause();
             if (this.World.keyboard.right && this.x < this.World.level.level_end_x) {
@@ -87,7 +93,6 @@ class character extends MovableObject {
                 this.jump();
                 this.jumping_audio.play();
             }
-
             this.World.camera_x = -this.x + 100;
         }, 1000 / 60);
 

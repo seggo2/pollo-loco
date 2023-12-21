@@ -22,7 +22,7 @@ class drawableobject {
 
     drawFrame(ctx) {
         //hitbox//
-        if (this instanceof character || this instanceof  Endboss ) {
+        if (this instanceof character || this instanceof Endboss ) {
             ctx.beginPath();//
             ctx.lineWidth = "3";//
             ctx.strokeStyle = "blue";//

@@ -13,7 +13,7 @@ class collectable extends drawableobject {
         super();
         this.loadImage(this.IMAGES_bottle);
         this.y = 350;
-        this.x = 400 + Math.random() * 2000;
+        this.x = 400 + Math.random() * 1800;
         this.width = 90;
         this.height = 80;
     }

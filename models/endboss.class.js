@@ -5,7 +5,13 @@ class Endboss extends MovableObject {
 
     height = 300;
 
-    energy = 800;
+    energy = 100;
+
+    died=false;
+
+    hadFirstContact = false;
+
+    atackTouch = false;
 
     offset = {
         top: 0,
@@ -63,33 +69,41 @@ class Endboss extends MovableObject {
         this.loadImages(this.images_hurt);
         this.loadImages(this.images_dead);
         this.x = 2300;
-        this.speed = 1;
         this.animate()
     }
 
     animate() {
         setInterval(() => {
-            // this.moveLeft()
-        }, 1000 / 60)
+            if (this.hadFirstContact == true) {
+                this.playAnimation(this.images_walk)
+                this.speed = 12;
+                this.moveLeft()
+            } else {
+                this.playAnimation(this.images_alert)
+            }
 
-        setInterval(() => {
-            this.playAnimation(this.images_walk)
-        }, 250);
-
+            if (this.died==true) {
+                setTimeout(() => {
+                    this.y=500;
+                }, 1000);
+            }
+        }, 120)
         setInterval(() => {
 
             if (this.isDead()) {
-
                 this.playAnimation(this.images_dead)
-
+                this.died=true;
             } else if (this.isHurt()) {
 
                 this.playAnimation(this.images_hurt)
                 console.log(this.energy)
-
+            }
+            if (this.atackTouch == true) {
+                this.playAnimation(this.images_atack)
+                this.atackTouch=false;
             }
         }, 60);
 
     }
-    
+
 }
