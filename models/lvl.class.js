@@ -2,7 +2,7 @@ class level {
     enemies;
     clouds;
     backgroundObject;
-    level_end_x = 2500;
+    level_end_x = 2700;
     collectable;
     collectable_coin;
     constructor(enemies, clouds, backgroundObject, collectable,  collectable_coin) {

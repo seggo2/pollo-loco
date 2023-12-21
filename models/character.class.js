@@ -10,6 +10,8 @@ class character extends MovableObject {
 
     energy = 100;
 
+    died = false;
+
     images_walking = [
         ' img/2_character_pepe/2_walk/W-21.png',
         ' img/2_character_pepe/2_walk/W-22.png',
@@ -93,7 +95,17 @@ class character extends MovableObject {
                 this.jump();
                 this.jumping_audio.play();
             }
-            this.World.camera_x = -this.x + 100;
+            if (this.died == true) {
+                this.World.keyboard.right = false
+                this.World.keyboard.left = false
+                this.World.keyboard.space = false
+                setTimeout(() => {
+                    this.y = 500;
+                }, 1000);
+            }
+            if (this.x < 2200) {
+                this.World.camera_x = -this.x + 100;
+            }
         }, 1000 / 60);
 
         setInterval(() => {
@@ -101,6 +113,7 @@ class character extends MovableObject {
             if (this.isDead()) {
 
                 this.playAnimation(this.images_dead)
+                this.died = true;
 
             } else if (this.isHurt()) {
 
