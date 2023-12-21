@@ -49,6 +49,8 @@ const level1 = new level(
         new collectable(),
         new collectable(),
         new collectable(),
+        new collectable(),
+        new collectable(),
     ],
     [
         new collectable_coin(),

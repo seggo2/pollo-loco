@@ -94,9 +94,7 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.images_dead)
                 this.died=true;
             } else if (this.isHurt()) {
-
                 this.playAnimation(this.images_hurt)
-                console.log(this.energy)
             }
             if (this.atackTouch == true) {
                 this.playAnimation(this.images_atack)
