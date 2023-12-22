@@ -6,6 +6,9 @@ const level1 = new level(
         new Chicken(),
         new Chicken(),
         new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
     ],
     [
         new Cloud(),
@@ -53,7 +56,6 @@ const level1 = new level(
         new collectable(),
     ],
     [
-        new collectable_coin(),
         new collectable_coin(),
         new collectable_coin(),
         new collectable_coin(),
