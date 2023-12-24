@@ -26,7 +26,8 @@ class bottlebar extends drawableobject{
     }
 
     resolveImageIndex_bottle() {
-        if (this.percentage_bottle == 100) {
+
+        if (this.percentage_bottle > 100) {
             return 5;
         } else if (this.percentage_bottle > 80) {
             return 4;

@@ -74,7 +74,7 @@ class character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.x > 1800 && !this.World.endboss.hadFirstContact) {
+            if (this.x > 2000 && !this.World.endboss.hadFirstContact) {
                 this.World.endboss.hadFirstContact = true;
             }
         }, 1000 / 60)
@@ -131,5 +131,9 @@ class character extends MovableObject {
         }, 60);
 
     }
+    mute(){
+        this.walking_Sound.pause()
+        this.jumping_audio.pause()
+      }
 
 }

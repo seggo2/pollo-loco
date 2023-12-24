@@ -5,9 +5,9 @@ class Endboss extends MovableObject {
 
     height = 300;
 
-    energy = 100;
+    energy = 120;
 
-    died=false;
+    died = false;
 
     hadFirstContact = false;
 
@@ -68,7 +68,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.images_atack);
         this.loadImages(this.images_hurt);
         this.loadImages(this.images_dead);
-        this.x = 2300;
+        this.x = 2500;
         this.animate()
     }
 
@@ -76,29 +76,32 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.hadFirstContact == true) {
                 this.playAnimation(this.images_walk)
-                this.speed = 12;
+                this.speed = 22;
                 this.moveLeft()
             } else {
                 this.playAnimation(this.images_alert)
             }
 
-            if (this.died==true) {
+            if (this.died == true) {
                 setTimeout(() => {
-                    this.y=500;
-                }, 1000);
+                    this.y = 500;
+                }, 500);
+            }
+            if (this.x < 150) {
+                this.hadFirstContact=false;
+                this.speed=0
             }
         }, 120)
         setInterval(() => {
-
             if (this.isDead()) {
                 this.playAnimation(this.images_dead)
-                this.died=true;
+                this.died = true;
             } else if (this.isHurt()) {
                 this.playAnimation(this.images_hurt)
             }
             if (this.atackTouch == true) {
                 this.playAnimation(this.images_atack)
-                this.atackTouch=false;
+                this.atackTouch = false;
             }
         }, 60);
 

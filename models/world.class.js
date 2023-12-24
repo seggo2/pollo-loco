@@ -1,6 +1,4 @@
 class World {
-
-    background_sound = new Audio('audio/background.mp3');
     bottle_collision = new Audio('audio/aufprall_glas.mp3')
     character = new character();
     endboss = new Endboss();
@@ -26,7 +24,6 @@ class World {
 
     setWorld() {
         this.character.World = this;
-        // this.background_sound.play();
     }
 
     run() {
@@ -66,6 +63,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     enemy.hit()
+                    this.bottle_collision.play();
                 }
             })
         })

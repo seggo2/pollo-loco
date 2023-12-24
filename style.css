@@ -1,27 +1,125 @@
-body{
+body {
     margin: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     background-image: url('img/ai-generated-8213401_1920.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Rubik Scribble;
 }
 
-canvas{
+canvas {
     background-color: black;
+
 }
 
-.fullscreen img{
+.fullscreen img {
     height: 25px;
     cursor: pointer;
 }
-.fullscreen{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+
+.startScreenImage {
+    width:720px;
+    height:480px;
 }
-#fullscreen{
+
+.fullscreen {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    right: 5px;
+    bottom: 5px;
+}
+
+#fullscreen {
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: center;
+}
+
+.howPlay img {
+    padding-top: 20px;
+    width: 200px;
+}
+
+.howPlay {
+    width: 500px;
+    background-color: wheat;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+}
+.information{
+    width: 40px;
+    position: absolute;
+    top: 20px;
+    right: 400px;
+}
+.information:hover{
+    cursor: pointer;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+.controller{
+    position: absolute;
+    width: 40px;
+    top: 20px;
+    right: 300px;
+}
+.controller:hover{
+    cursor: pointer;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+.music{
+    position: absolute;
+    width: 40px;
+    top: 20px;
+    right: 200px;
+}
+.music:hover{
+    cursor: pointer;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+
+.startScreen {
+    position: relative;
+}
+.d-none{
+    display: none !important;
+}
+.inforStart{
+    text-align: center;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    font-family: roboto;
+    font-weight:normal;
+}
+.buttonPlay{
+    position: absolute;
+    top: 250px;
+    right: 300px;
+    width: 120px;
+    height: 50px;
+    background-color: orangered;
+    color: wheat;
+    font-size: 30px;
+    font-family: roboto;
+    font-weight: bold;
+    border-radius: 20px;
+}
+.buttonPlay:hover{
+    cursor: pointer;
+    background-color: gold;
+    color: red;
 }
