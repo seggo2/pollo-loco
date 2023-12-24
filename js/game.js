@@ -29,6 +29,7 @@ function startScreen() {
          <button onclick="gameStart()" class="buttonPlay">PLAY</button>
          <img  onclick="informations()" class="information"  src='img/info-803717_1280.png'>
          <img  onclick="mute()" class="music"  src='img/music.png'>
+         <img class="fullScreenStart" onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>`;
 }
 
@@ -111,8 +112,8 @@ function howTo() {
    canvas.innerHTML = "";
    canvas.innerHTML += `
          <b>To Walk and To Jump </b> 
-         <img src="/img/pngwing.com.png" alt="">
-         <img src="/img/space-button-icon.png" alt="">
+         <img src="img/pngwing.com.png" alt="">
+         <img src="img/space-button-icon.png" alt="">
          <b>Press D to Atack</b>
   `;
 }
@@ -143,7 +144,7 @@ function start() {
    canvas.innerHTML = "";
    canvas.innerHTML = ` <canvas id="canvas" width="720" height="480"></canvas>
       <div class="fullscreen">
-          <img onclick="mute()" src="/img/music.png" alt="">
+          <img onclick="mute()" src="img/music.png" alt="">
           <img onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>`;
 }

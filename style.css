@@ -123,3 +123,10 @@ canvas {
     background-color: gold;
     color: red;
 }
+.fullScreenStart{
+    width: 40px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}
