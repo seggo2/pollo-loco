@@ -10,6 +10,9 @@ let startgame = false;
 
 retry = false;
 
+/**
+ * init function which commands what starts first and when
+ */
 function init() {
    if (!startgame) {
       if (retry == true) {
@@ -25,6 +28,9 @@ function init() {
    }
 }
 
+/**
+ * html start screeen
+ */
 function startScreen() {
    let canvas = document.getElementById('fullscreen');
    canvas.innerHTML = "";
@@ -39,6 +45,27 @@ function startScreen() {
       </div>`;
 }
 
+/**
+ * game won html
+ */
+function winGame() {
+   let canvas = document.getElementById('fullscreen');
+   canvas.innerHTML = "";
+   canvas.innerHTML = `  <div class="startScreen">
+   <img  class="startScreenImage"  src='img/9_intro_outro_screens/game_over/game over.png'>
+   <button onclick="winStart()" class="buttonPlay">Win!</button>
+</div>`;
+}
+
+function winStart(){
+   retry = false
+   startgame = true;
+   location.reload();
+}
+
+/**
+ * html gameover screen
+ */
 function retryScreen() {
    let canvas = document.getElementById('fullscreen');
    canvas.innerHTML = "";
@@ -48,6 +75,9 @@ function retryScreen() {
 </div>`;
 }
 
+/**
+ * keyboard press variables
+ */
 window.addEventListener("keydown", (e) => {
    if (e.keyCode == 37) {
       keyboard.left = true;
@@ -70,7 +100,9 @@ window.addEventListener("keydown", (e) => {
 
 });
 
-
+/**
+ * keyboard press variables
+ */
 window.addEventListener("keyup", (e) => {
    if (e.keyCode == 37) {
       keyboard.left = false;
@@ -93,11 +125,18 @@ window.addEventListener("keyup", (e) => {
 
 });
 
+/**
+ * id for enter fullscreeen function
+ */
 function fullscreen() {
    let element = document.getElementById('fullscreen')
    enterFullscreen(element)
 }
 
+/**
+ * enter fullscreen function
+ * @param {id} element 
+ */
 function enterFullscreen(element) {
    if (element.requestFullscreen) {
       element.requestFullscreen();
@@ -108,7 +147,9 @@ function enterFullscreen(element) {
    }
 }
 
-
+/**
+ * exit fullscreen function
+ */
 function exitFullscreen() {
    if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -117,6 +158,9 @@ function exitFullscreen() {
    }
 }
 
+/**
+ * mute the sound function
+ */
 function mute() {
    this.background_sound.pause()
    world.character.mute = true;
@@ -124,6 +168,9 @@ function mute() {
    world.mute = true;
 }
 
+/**
+ * html for how to controlle the game
+ */
 function howTo() {
    document.getElementById(`howPlay`).classList.toggle('d-none');
    let canvas = document.getElementById('howPlay');
@@ -136,6 +183,9 @@ function howTo() {
   `;
 }
 
+/**
+ * information html to now how to play the game
+ */
 function informations() {
    document.getElementById(`howPlay`).classList.toggle('d-none');
    let canvas = document.getElementById('howPlay');
@@ -150,10 +200,17 @@ function informations() {
   `;
 }
 
+/**
+ * toggles d-none class
+ * @param {id} name 
+ */
 function toggleDnone(name) {
    document.getElementById(`${name}`).classList.toggle('d-none');
 }
 
+/**
+ * gamestart function 
+ */
 function gameStart() {
    if (retry == true) {
       retry = false;
@@ -164,6 +221,9 @@ function gameStart() {
    }
 }
 
+/**
+ * start screeen html
+ */
 function start() {
    let canvas = document.getElementById('fullscreen');
    canvas.innerHTML = "";
@@ -174,6 +234,10 @@ function start() {
       </div>`;
 }
 
+/**
+ * gameover function switches variables 
+ * @returns true
+ */
 function gameOver() {
    if (retry == true) {
       return true
@@ -184,6 +248,13 @@ function gameOver() {
          world = "";
          world.character = "";
          init()
+      }
+      if (world.endboss.died == true) {
+         startgame = false;
+         retry = true;
+         world = "";
+         world.character = "";
+         winGame();
       }
    }
 }

@@ -114,6 +114,9 @@ class character extends MovableObject {
                 this.walking_Sound.pause()
                 this.jumping_audio.pause()
             }
+            if (this.World.endboss.endGame == true) {
+                this.died = true;
+            }
         }, 1000 / 60);
 
         setInterval(() => {

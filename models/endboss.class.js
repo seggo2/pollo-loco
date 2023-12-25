@@ -17,6 +17,8 @@ class Endboss extends MovableObject {
 
     endboss_Sound = new Audio('audio/368511_6512973-lq.mp3')
 
+    endGame=false;
+
     offset = {
         top: 0,
         bottom: 0,
@@ -90,11 +92,13 @@ class Endboss extends MovableObject {
             if (this.died == true) {
                 setTimeout(() => {
                     this.y = 500;
+                    gameOver()
                 }, 500);
             }
             if (this.x < 150) {
                 this.hadFirstContact = false;
                 this.speed = 0
+                this.endGame=true;
             }
             if (this.mute == true) {
                 this.endboss_Sound.pause();
