@@ -12,6 +12,7 @@ class World {
     bottlebar = new bottlebar();
     throwableObject = [];
     throwtime = null;
+    mute=false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -38,7 +39,7 @@ class World {
 
     throw() {
         setInterval(() => {
-            this.checkcollisions_salsa_throw()
+            this.checkcollisions_salsa_throw();
         }, 100);
     }
 
@@ -63,7 +64,10 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     enemy.hit()
-                    this.bottle_collision.play();
+                    if (!this.mute) {
+                        enemy.chicken_sound.play();
+                        this.bottle_collision.play();   
+                    }
                 }
             })
         })
@@ -106,12 +110,9 @@ class World {
     checkcollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                if (enemy.isdead == true) {
-
-                } else {
+                if (!enemy.isdead)
                     this.character.hit();
-                    this.statusBar.setpercentage_health(this.character.energy);
-                }
+                this.statusBar.setpercentage_health(this.character.energy);
             }
         })
     }

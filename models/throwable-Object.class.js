@@ -3,6 +3,8 @@ class ThrowableObject extends MovableObject {
 
     splashed = false;
 
+    mute=false;
+
     salsa_Image = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
         'img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
@@ -29,11 +31,12 @@ class ThrowableObject extends MovableObject {
         this.height = 80;
         this.width = 80;
         this.throw();
-        // this.animate();
     }
     throw() {
         let throwTime = new Date().getTime();
-        this.throw_sound.play();
+        if (!this.mute) {
+            this.throw_sound.play();
+        }
         this.speedY = 8;
         this.applyGravity();
         setInterval(() => {

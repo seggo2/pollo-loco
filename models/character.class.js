@@ -10,6 +10,8 @@ class character extends MovableObject {
 
     energy = 100;
 
+    mute = false;
+
     died = false;
 
     images_walking = [
@@ -58,6 +60,7 @@ class character extends MovableObject {
 
     World;
 
+    hurt_Sound = new Audio('audio/497713_936900-lq.mp3')
     walking_Sound = new Audio('audio/footstep.mp3')
     jumping_audio = new Audio('audio/jump.mp3')
 
@@ -99,6 +102,7 @@ class character extends MovableObject {
                 this.World.keyboard.right = false
                 this.World.keyboard.left = false
                 this.World.keyboard.space = false
+                gameOver();
                 setTimeout(() => {
                     this.y = 500;
                 }, 1000);
@@ -106,17 +110,20 @@ class character extends MovableObject {
             if (this.x < 2200) {
                 this.World.camera_x = -this.x + 100;
             }
+            if (this.mute == true) {
+                this.walking_Sound.pause()
+                this.jumping_audio.pause()
+            }
         }, 1000 / 60);
 
         setInterval(() => {
-
             if (this.isDead()) {
-
                 this.playAnimation(this.images_dead)
                 this.died = true;
-
             } else if (this.isHurt()) {
-
+                if (!this.mute) {
+                    this.hurt_Sound.play();
+                }
                 this.playAnimation(this.images_hurt)
 
             } else if (this.isAboveGround()) {
@@ -131,9 +138,5 @@ class character extends MovableObject {
         }, 60);
 
     }
-    mute(){
-        this.walking_Sound.pause()
-        this.jumping_audio.pause()
-      }
 
 }

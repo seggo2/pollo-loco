@@ -8,12 +8,18 @@ background_sound = new Audio('audio/background.mp3');
 
 let startgame = false;
 
+retry = false;
+
 function init() {
-   // this.background_sound.play()
    if (!startgame) {
-      startScreen();
+      if (retry == true) {
+         retryScreen()
+      } else {
+         startScreen();
+      }
    } else {
       start();
+      // this.background_sound.play()
       canvas = document.getElementById('canvas');
       world = new World(canvas, keyboard);
    }
@@ -31,6 +37,15 @@ function startScreen() {
          <img  onclick="mute()" class="music"  src='img/music.png'>
          <img class="fullScreenStart" onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>`;
+}
+
+function retryScreen() {
+   let canvas = document.getElementById('fullscreen');
+   canvas.innerHTML = "";
+   canvas.innerHTML = `  <div class="startScreen">
+   <img  class="startScreenImage"  src='img/9_intro_outro_screens/game_over/you lost.png'>
+   <button onclick="gameStart()" class="buttonPlay">Retry</button>
+</div>`;
 }
 
 window.addEventListener("keydown", (e) => {
@@ -104,6 +119,9 @@ function exitFullscreen() {
 
 function mute() {
    this.background_sound.pause()
+   world.character.mute = true;
+   world.endboss.mute = true;
+   world.mute = true;
 }
 
 function howTo() {
@@ -127,7 +145,7 @@ function informations() {
          <b>1.To win this game u have to defeat the Endboss<br>
          2.if he reaches the start Point of the character or kills
          the character you lose.!<br>3. but be aware! u only have Limited 
-         Throwable Bottles which u have to Collect in order to Throw One! </b>
+         Throwable Bottles which u have to Collect in order to Throw One This is your only Damage Resource! </b>
    </div>
   `;
 }
@@ -135,10 +153,17 @@ function informations() {
 function toggleDnone(name) {
    document.getElementById(`${name}`).classList.toggle('d-none');
 }
+
 function gameStart() {
-   startgame = true;
-   init();
+   if (retry == true) {
+      retry = false;
+      location.reload();
+   } else {
+      startgame = true;
+      init();
+   }
 }
+
 function start() {
    let canvas = document.getElementById('fullscreen');
    canvas.innerHTML = "";
@@ -147,4 +172,18 @@ function start() {
           <img onclick="mute()" src="img/music.png" alt="">
           <img onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>`;
+}
+
+function gameOver() {
+   if (retry == true) {
+      return true
+   } else {
+      if (world.character.died == true) {
+         startgame = false;
+         retry = true;
+         world = "";
+         world.character = "";
+         init()
+      }
+   }
 }

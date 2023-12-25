@@ -11,7 +11,11 @@ class Endboss extends MovableObject {
 
     hadFirstContact = false;
 
+    mute = false;
+
     atackTouch = false;
+
+    endboss_Sound = new Audio('audio/368511_6512973-lq.mp3')
 
     offset = {
         top: 0,
@@ -78,6 +82,7 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.images_walk)
                 this.speed = 22;
                 this.moveLeft()
+                this.endboss_Sound.play();
             } else {
                 this.playAnimation(this.images_alert)
             }
@@ -88,8 +93,11 @@ class Endboss extends MovableObject {
                 }, 500);
             }
             if (this.x < 150) {
-                this.hadFirstContact=false;
-                this.speed=0
+                this.hadFirstContact = false;
+                this.speed = 0
+            }
+            if (this.mute == true) {
+                this.endboss_Sound.pause();
             }
         }, 120)
         setInterval(() => {
