@@ -14,6 +14,7 @@ retry = false;
  * init function which commands what starts first and when
  */
 function init() {
+   this.background_sound.play()
    if (!startgame) {
       if (retry == true) {
          retryScreen()
@@ -22,7 +23,7 @@ function init() {
       }
    } else {
       start();
-      // this.background_sound.play()
+
       canvas = document.getElementById('canvas');
       world = new World(canvas, keyboard);
    }
@@ -40,7 +41,7 @@ function startScreen() {
          <img  onclick="howTo()" class="controller"  src='img/controller-1784573_1280.png'>
          <button onclick="gameStart()" class="buttonPlay">PLAY</button>
          <img  onclick="informations()" class="information"  src='img/info-803717_1280.png'>
-         <img  onclick="mute()" class="music"  src='img/music.png'>
+         <img  onclick="muteBackground()" class="music"  src='img/music.png'>
          <img class="fullScreenStart" onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>`;
 }
@@ -57,7 +58,7 @@ function winGame() {
 </div>`;
 }
 
-function winStart(){
+function winStart() {
    retry = false
    startgame = true;
    location.reload();
@@ -169,6 +170,12 @@ function mute() {
 }
 
 /**
+ * mutes only background at start screen
+ */
+function muteBackground() {
+   this.background_sound.pause()
+}
+/**
  * html for how to controlle the game
  */
 function howTo() {
@@ -248,13 +255,14 @@ function gameOver() {
          world = "";
          world.character = "";
          init()
-      }
-      if (world.endboss.died == true) {
-         startgame = false;
-         retry = true;
-         world = "";
-         world.character = "";
-         winGame();
+      } else {
+         if (world.endboss.died == true) {
+            startgame = false;
+            retry = true;
+            world = "";
+            world.character = "";
+            winGame();
+         }
       }
    }
 }
