@@ -14,7 +14,7 @@ retry = false;
  * init function which commands what starts first and when
  */
 function init() {
-   this.background_sound.play()
+   // this.background_sound.play()
    if (!startgame) {
       if (retry == true) {
          retryScreen()
@@ -75,56 +75,6 @@ function retryScreen() {
    <button onclick="gameStart()" class="buttonPlay">Retry</button>
 </div>`;
 }
-
-/**
- * keyboard press variables
- */
-window.addEventListener("keydown", (e) => {
-   if (e.keyCode == 37) {
-      keyboard.left = true;
-   }
-   if (e.keyCode == 39) {
-      keyboard.right = true;
-   }
-   if (e.keyCode == 38) {
-      keyboard.up = true;
-   }
-   if (e.keyCode == 40) {
-      keyboard.down = true;
-   }
-   if (e.keyCode == 32) {
-      keyboard.space = true;
-   }
-   if (e.keyCode == 68) {
-      keyboard.d = true;
-   }
-
-});
-
-/**
- * keyboard press variables
- */
-window.addEventListener("keyup", (e) => {
-   if (e.keyCode == 37) {
-      keyboard.left = false;
-   }
-   if (e.keyCode == 39) {
-      keyboard.right = false;
-   }
-   if (e.keyCode == 38) {
-      keyboard.up = false;
-   }
-   if (e.keyCode == 40) {
-      keyboard.down = false;
-   }
-   if (e.keyCode == 32) {
-      keyboard.space = false;
-   }
-   if (e.keyCode == 68) {
-      keyboard.d = false;
-   }
-
-});
 
 /**
  * id for enter fullscreeen function
@@ -236,9 +186,19 @@ function start() {
    canvas.innerHTML = "";
    canvas.innerHTML = ` <canvas id="canvas" width="720" height="480"></canvas>
       <div class="fullscreen">
-          <img onclick="mute()" src="img/music.png" alt="">
+          <img class="mutePhone" onclick="mute()" src="img/music.png" alt="">
           <img onclick="fullscreen()" src="img/fullscreen.png" alt="">
+      </div>
+      <div  id="positionSmartphone" class="positionSmartphone">
+      <div class="leftRight">
+          <img ontouchstart="eventlistenerPhone()" id="leftKey" src="img/left-arrow-key.png" alt="">
+          <img ontouchstart="eventlistenerPhone()" id="righttKey" src="img/right-arrow (1).png" alt="">
+      </div>
+      <div class="jumpThrow">
+          <img ontouchstart="eventlistenerPhone()" id="upKey" src="img/up-arrow.png" alt="">
+          <img ontouchstart="eventlistenerPhone()" id="throwKey" src="img/arrow.png" alt="">
       </div>`;
+
 }
 
 /**
@@ -266,3 +226,92 @@ function gameOver() {
       }
    }
 }
+
+/**
+ * event listener for smartphones
+ */
+function eventlistenerPhone() {
+
+   document.getElementById('leftKey').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.left = true;
+   });
+   document.getElementById('leftKey').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.left = false;
+   });
+   document.getElementById('righttKey').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.right = true;
+   });
+   document.getElementById('righttKey').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.right = false;
+   });
+   document.getElementById('upKey').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.space = true;
+   });
+   document.getElementById('upKey').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.space = false;
+   });
+   document.getElementById('throwKey').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.d = true;
+   });
+   document.getElementById('throwKey').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.d = false;
+   });
+}
+
+/**
+ * keyboard press variables
+ */
+window.addEventListener("keydown", (e) => {
+   if (e.keyCode == 37) {
+      keyboard.left = true;
+   }
+   if (e.keyCode == 39) {
+      keyboard.right = true;
+   }
+   if (e.keyCode == 38) {
+      keyboard.up = true;
+   }
+   if (e.keyCode == 40) {
+      keyboard.down = true;
+   }
+   if (e.keyCode == 32) {
+      keyboard.space = true;
+   }
+   if (e.keyCode == 68) {
+      keyboard.d = true;
+   }
+
+});
+
+/**
+ * keyboard press variables
+ */
+window.addEventListener("keyup", (e) => {
+   if (e.keyCode == 37) {
+      keyboard.left = false;
+   }
+   if (e.keyCode == 39) {
+      keyboard.right = false;
+   }
+   if (e.keyCode == 38) {
+      keyboard.up = false;
+   }
+   if (e.keyCode == 40) {
+      keyboard.down = false;
+   }
+   if (e.keyCode == 32) {
+      keyboard.space = false;
+   }
+   if (e.keyCode == 68) {
+      keyboard.d = false;
+   }
+
+});

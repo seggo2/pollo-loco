@@ -6,7 +6,7 @@ body {
     justify-content: center;
     background-image: url('img/ai-generated-8213401_1920.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center;
     font-family: Rubik Scribble;
 }
 
@@ -21,8 +21,8 @@ canvas {
 }
 
 .startScreenImage {
-    width:720px;
-    height:480px;
+    width: 720px;
+    height: 480px;
 }
 
 .fullscreen {
@@ -54,37 +54,43 @@ canvas {
     font-size: 40px;
     display: flex;
     align-items: center;
-    cursor:pointer;
+    cursor: pointer;
 }
-.information{
+
+.information {
     width: 40px;
     position: absolute;
-    top: 20px;
-    right: 400px;
+    top: 5%;
+    right: 60%;
 }
-.information:hover{
+
+.information:hover {
     cursor: pointer;
     border: 1px solid wheat;
     border-radius: 10px;
 }
-.controller{
+
+.controller {
     position: absolute;
     width: 40px;
-    top: 20px;
-    right: 300px;
+    top: 5%;
+    right: 40%;
 }
-.controller:hover{
+
+.controller:hover {
     cursor: pointer;
     border: 1px solid wheat;
     border-radius: 10px;
 }
-.music{
+
+.music {
     position: absolute;
     width: 40px;
-    top: 20px;
-    right: 200px;
+    top: 5%;
+    right: 20%;
 }
-.music:hover{
+
+.music:hover {
     cursor: pointer;
     border: 1px solid wheat;
     border-radius: 10px;
@@ -93,10 +99,12 @@ canvas {
 .startScreen {
     position: relative;
 }
-.d-none{
+
+.d-none {
     display: none !important;
 }
-.inforStart{
+
+.inforStart {
     text-align: center;
     padding-left: 20px;
     padding-top: 20px;
@@ -104,13 +112,14 @@ canvas {
     padding-right: 20px;
     font-size: 20px;
     font-family: roboto;
-    font-weight:normal;
+    font-weight: normal;
     cursor: pointer;
 }
-.buttonPlay{
+
+.buttonPlay {
     position: absolute;
-    top: 250px;
-    right: 300px;
+    top: 50%;
+    right: 40%;
     width: 120px;
     height: 50px;
     background-color: orangered;
@@ -120,19 +129,116 @@ canvas {
     font-weight: bold;
     border-radius: 20px;
 }
-.buttonPlay:hover{
+
+.buttonPlay:hover {
     cursor: pointer;
     background-color: gold;
     color: red;
 }
-.fullScreenStart{
+
+.fullScreenStart {
     width: 40px;
     position: absolute;
     bottom: 10px;
     right: 10px;
     cursor: pointer;
 }
-h1{
+
+h1 {
     font-size: 50px;
     font-weight: bold;
 }
+
+canvas {
+    background-color: black;
+    display: block;
+}
+
+.positionSmartphone img {
+    width: 15px;
+}
+
+.positionSmartphone {
+    position: absolute;
+    top:87%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    visibility: hidden;
+}
+
+.leftRight {
+    display: flex;
+    gap: 40px;
+}
+
+.leftRight img {
+    border: 4px solid black;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.jumpThrow {
+    display: flex;
+    gap: 40px;
+}
+
+.jumpThrow img {
+    border: 4px solid black;
+    padding: 5px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:760px) {
+    canvas {
+        width: 100%;
+    }
+
+    .startScreenImage {
+        width: 100%;
+    }
+
+    .positionSmartphone {
+        visibility: visible;
+    }
+    .fullscreen{
+        position: absolute;
+        top: 10px !important;
+        right: 10px !important;
+    }
+
+}
+
+@media only screen and (max-height:480px) {
+    canvas {
+        height: 100vh;
+    }
+
+    .startScreenImage {
+        height: 100vh;
+    }
+
+    .positionSmartphone {
+        visibility: visible;
+    }
+
+}
+
+@media only screen and (max-width:450px) {
+    .inforStart {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .howPlay {
+        width: 100%;
+        font-size: 20px;
+        border-radius: 0px;
+    }
+    .fullscreen{
+        position: absolute;
+        top: 10px !important;
+        right: 10px !important;
+    }
+}
+
