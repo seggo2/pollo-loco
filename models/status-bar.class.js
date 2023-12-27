@@ -20,13 +20,18 @@ class statusbar extends drawableobject {
         this.width = 200;
         this.height = 60;
     }
-    
+    /**
+     * loads the img 
+     * @param {number} percentage_health 
+     */
     setpercentage_health(percentage_health) {
         this.percentage_health = percentage_health;
         let path = this.IMAGES_health[this.resolveImageIndex_health()];
         this.img = this.imagecache[path];
     }
-
+    /**
+     * returns the img who should be showen 
+     */
     resolveImageIndex_health() {
         if (this.percentage_health == 100) {
             return 5;

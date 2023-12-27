@@ -1,9 +1,7 @@
 class ThrowableObject extends MovableObject {
-    throw_sound = new Audio('audio/wurf.mp3')
 
     splashed = false;
 
-    mute=false;
 
     salsa_Image = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -32,25 +30,25 @@ class ThrowableObject extends MovableObject {
         this.width = 80;
         this.throw();
     }
+    /**
+     * throw function and if its splashed showing the right animation
+     */
     throw() {
         let throwTime = new Date().getTime();
-        if (!this.mute) {
-            this.throw_sound.play();
-        }
         this.speedY = 8;
         this.applyGravity();
         setInterval(() => {
-                if (this.splashed == true) {
-                    this.playAnimation(this.salsa_splash)
-                    this.playAnimation(this.salsa_splash)
-                    this.playAnimation(this.salsa_splash)
-                    this.speedY += 1;
-                    this.x += 0;
-                    this.splashed = false
-                } else {
-                    this.playAnimation(this.salsa_Image)
-                    this.x += 20;
-                }
+            if (this.splashed == true) {
+                this.playAnimation(this.salsa_splash)
+                this.playAnimation(this.salsa_splash)
+                this.playAnimation(this.salsa_splash)
+                this.speedY += 1;
+                this.x += 0;
+                this.splashed = false
+            } else {
+                this.playAnimation(this.salsa_Image)
+                this.x += 20;
+            }
         }, 20);
     }
 }

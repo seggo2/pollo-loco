@@ -23,7 +23,6 @@ function init() {
       }
    } else {
       start();
-
       canvas = document.getElementById('canvas');
       world = new World(canvas, keyboard);
    }
@@ -91,9 +90,9 @@ function fullscreen() {
 function enterFullscreen(element) {
    if (element.requestFullscreen) {
       element.requestFullscreen();
-   } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+   } else if (element.msRequestFullscreen) {    
       element.msRequestFullscreen();
-   } else if (element.webkitRequestFullscreen) {  // iOS Safari
+   } else if (element.webkitRequestFullscreen) { 
       element.webkitRequestFullscreen();
    }
 }
@@ -198,7 +197,6 @@ function start() {
           <img ontouchstart="eventlistenerPhone()" id="upKey" src="img/up-arrow.png" alt="">
           <img ontouchstart="eventlistenerPhone()" id="throwKey" src="img/arrow.png" alt="">
       </div>`;
-
 }
 
 /**

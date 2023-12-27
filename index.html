@@ -37,18 +37,22 @@
 
 
 <body onload="init()">
-    <h1>El pollo loco</h1>
-    <div id="fullscreen">
-        <canvas id="canvas" width="760" height="480"></canvas>
-        <div class="fullscreen">
-            <img  onclick="mute()" src="img/music.png" alt="">
-            <img onclick="fullscreen()" src="img/fullscreen.png" alt="">
+    <div class="rotateMessage ">
+        <img  id="turnPhone" class="rotateMessageImg" src="img/7cbf63690d0116ab4fb85d550da0bc55.jpg" alt="">
+        <div class="phoneRotation ">
+            <h1>El pollo loco</h1>
+            <div id="fullscreen">
+                <canvas id="canvas" width="760" height="480"></canvas>
+                <div class="fullscreen">
+                    <img onclick="mute()" src="img/music.png" alt="">
+                    <img onclick="fullscreen()" src="img/fullscreen.png" alt="">
+                </div>
+            </div>
+            <div onclick="toggleDnone('howPlay')" id="howPlay" class="howPlay d-none"></div>
         </div>
     </div>
-    </div>
-    <div onclick="toggleDnone('howPlay')" id="howPlay" class="howPlay d-none">
 
-    </div>
+
 </body>
 
 </html>

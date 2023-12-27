@@ -1,4 +1,4 @@
-class bottlebar extends drawableobject{
+class bottlebar extends drawableobject {
     images_bottle = [
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/0.png',
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/20.png',
@@ -18,15 +18,19 @@ class bottlebar extends drawableobject{
         this.width = 200;
         this.height = 60;
     }
-
+    /**
+    * loads the img 
+    * @param {number} percentage_health 
+    */
     setpercentage_bottle(percentage_bottle) {
         this.percentage_bottle += percentage_bottle;
         let path = this.images_bottle[this.resolveImageIndex_bottle()];
         this.img = this.imagecache[path];
     }
-
+    /**  
+    * returns the img who should be showen 
+    */
     resolveImageIndex_bottle() {
-
         if (this.percentage_bottle > 100) {
             return 5;
         } else if (this.percentage_bottle > 80) {

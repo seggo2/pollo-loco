@@ -1,12 +1,6 @@
 body {
     margin: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    background-image: url('img/ai-generated-8213401_1920.jpg');
-    background-size: cover;
-    background-position: center;
+    background-color: orange;
     font-family: Rubik Scribble;
 }
 
@@ -47,7 +41,7 @@ canvas {
 
 .howPlay {
     width: 500px;
-    background-color: wheat;
+    background-color: white;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
@@ -160,7 +154,7 @@ canvas {
 
 .positionSmartphone {
     position: absolute;
-    top:87%;
+    top: 87%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -189,56 +183,92 @@ canvas {
     cursor: pointer;
 }
 
+.phoneRotation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+.rotateMessageImg{
+    visibility: hidden;
+    z-index: 999;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+}
+
 @media only screen and (max-width:760px) {
     canvas {
         width: 100%;
     }
 
-    .startScreenImage {
-        width: 100%;
-    }
-
     .positionSmartphone {
         visibility: visible;
     }
-    .fullscreen{
+
+    .fullscreen {
         position: absolute;
         top: 10px !important;
         right: 10px !important;
     }
-
-}
-
-@media only screen and (max-height:480px) {
-    canvas {
-        height: 100vh;
-    }
-
-    .startScreenImage {
-        height: 100vh;
-    }
-
-    .positionSmartphone {
+    .rotateMessageImg{
         visibility: visible;
     }
 
-}
+    .phoneRotation {
+        height: 100vh;
+    }
 
-@media only screen and (max-width:450px) {
-    .inforStart {
+    h1 {
+        display: none;
+    }
+
+    .startScreenImage {
         width: 100%;
+        height: 100%;
+    }
+
+    .inforStart {
         font-size: 15px;
     }
 
     .howPlay {
         width: 100%;
-        font-size: 20px;
-        border-radius: 0px;
+        height: 200px;
+        position: absolute;
+        font-size: 15px;
+        top: 370px;
     }
-    .fullscreen{
+
+    .howPlay img {
+        height: 50px;
+        width: 100px;
+    }
+
+    .fullscreen {
         position: absolute;
         top: 10px !important;
         right: 10px !important;
     }
 }
 
+
+@media only screen and (max-height:490px) {
+
+    .positionSmartphone {
+        visibility: hidden !important;
+    }
+
+    h1 {
+        display: none;
+    }
+    .rotateMessageImg{
+        visibility: hidden;
+        z-index: 999;
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+    }
+
+}

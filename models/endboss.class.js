@@ -17,7 +17,7 @@ class Endboss extends MovableObject {
 
     endboss_Sound = new Audio('audio/368511_6512973-lq.mp3')
 
-    endGame=false;
+    endGame = false;
 
     offset = {
         top: 0,
@@ -77,32 +77,12 @@ class Endboss extends MovableObject {
         this.x = 2500;
         this.animate()
     }
-
+    /**
+     * overall animate functions 
+     */
     animate() {
         setInterval(() => {
-            if (this.hadFirstContact == true) {
-                this.playAnimation(this.images_walk)
-                this.speed = 22;
-                this.moveLeft()
-                this.endboss_Sound.play();
-            } else {
-                this.playAnimation(this.images_alert)
-            }
-
-            if (this.died == true) {
-                setTimeout(() => {
-                    this.y = 500;
-                    gameOver()
-                }, 500);
-            }
-            if (this.x < 150) {
-                this.hadFirstContact = false;
-                this.speed = 0
-                this.endGame=true;
-            }
-            if (this.mute == true) {
-                this.endboss_Sound.pause();
-            }
+            this.conditions();
         }, 120)
         setInterval(() => {
             if (this.isDead()) {
@@ -117,6 +97,34 @@ class Endboss extends MovableObject {
             }
         }, 60);
 
+    }
+    /**
+     * condition functions for game end and walking
+     */
+    conditions() {
+        if (this.hadFirstContact == true) {
+            this.playAnimation(this.images_walk)
+            this.speed = 22;
+            this.moveLeft()
+            this.endboss_Sound.play();
+        } else {
+            this.playAnimation(this.images_alert)
+        }
+
+        if (this.died == true) {
+            setTimeout(() => {
+                this.y = 500;
+                gameOver()
+            }, 500);
+        }
+        if (this.x < 150) {
+            this.hadFirstContact = false;
+            this.speed = 0
+            this.endGame = true;
+        }
+        if (this.mute == true) {
+            this.endboss_Sound.pause();
+        }
     }
 
 }

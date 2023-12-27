@@ -19,13 +19,18 @@ class coinbar extends drawableobject {
         this.width = 200;
         this.height = 60;
     }
-
+    /**
+    * loads the img 
+    * @param {number} percentage_health 
+    */
     setpercentage_coin(percentage_coin) {
         this.percentage_coin += percentage_coin;
         let path = this.images_coin[this.resolveImageIndex_coin()];
         this.img = this.imagecache[path];
     }
-
+    /**  
+    * returns the img who should be showen 
+    */
     resolveImageIndex_coin() {
         if (this.percentage_coin == 100) {
             return 5;
