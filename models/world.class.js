@@ -116,7 +116,9 @@ class World {
             if (bottle.isColliding(this.endboss)) {
                 this.endboss.hit();
                 bottle.splashed = true;
-                this.bottle_collision.play();
+                if (!this.mute) {
+                    this.bottle_collision.play();
+                }
             }
         })
         if (this.character.isColliding(this.endboss)) {
