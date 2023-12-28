@@ -5,7 +5,7 @@ class Endboss extends MovableObject {
 
     height = 300;
 
-    energy = 120;
+    energy = 100;
 
     died = false;
 

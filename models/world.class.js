@@ -10,6 +10,7 @@ class World {
     camera_x = 0;
     statusBar = new statusbar();
     coinbar = new coinbar();
+    bossbar = new endbossBar();
     bottlebar = new bottlebar();
     throwableObject = [];
     throwtime = null;
@@ -34,6 +35,9 @@ class World {
      */
     run() {
         setInterval(() => {
+            if (this.endboss.hadFirstContact == true) {
+                this.bossbar.x = 520;
+            }
             this.checkcollisions();
             this.checkcollisions_collectable();
             this.checkcollisions_coin();
@@ -58,7 +62,7 @@ class World {
         if (this.keyboard.d && this.bottlebar.percentage_bottle > 10) {
             if (!this.character.otherDirection) {
                 if (atackSpeed > 0.6 || this.throwtime == null) {
-                    let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
+                    let bottle = new ThrowableObject(this.character.x + 0, this.character.y + 90)
                     this.throwableObject.push(bottle);
                     this.throw()
                     if (!this.mute) {
@@ -116,6 +120,7 @@ class World {
             if (bottle.isColliding(this.endboss)) {
                 this.endboss.hit();
                 bottle.splashed = true;
+                this.bossbar.setpercentage_endboss(this.endboss.energy)
                 if (!this.mute) {
                     this.bottle_collision.play();
                 }
@@ -161,6 +166,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
         this.addToMap(this.coinbar);
+        this.addToMap(this.bossbar)
         this.addToMap(this.bottlebar);
         this.ctx.translate(this.camera_x, 0);
         /////////////

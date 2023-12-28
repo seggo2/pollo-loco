@@ -14,7 +14,7 @@ retry = false;
  * init function which commands what starts first and when
  */
 function init() {
-   this.background_sound.play()
+   // this.background_sound.play()
    if (!startgame) {
       if (retry == true) {
          retryScreen()
