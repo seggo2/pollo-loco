@@ -107,7 +107,7 @@ class World {
     checkcollisions_collectable() {
         this.level.collectable.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
-                this.bottlebar.setpercentage_bottle(10);
+                this.bottlebar.setpercentage_bottle(20);
                 bottle.y = 1000;
             }
         })

@@ -5,6 +5,7 @@ body {
     background-image: url(img/2ebh_229x_210319.jpg);
     background-position: center;
     background-size: cover;
+    height: 100vh;
 }
 
 canvas {
@@ -19,7 +20,7 @@ canvas {
 
 .startScreenImage {
     width: 720px;
-    height: 480px;
+    height: 100%;
 }
 
 .fullscreen {
@@ -95,6 +96,8 @@ canvas {
 
 .startScreen {
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .d-none {
@@ -195,7 +198,8 @@ canvas {
     flex-direction: column;
     z-index: 1;
 }
-.rotateMessageImg{
+
+.rotateMessageImg {
     visibility: hidden;
     z-index: 999;
     height: 100vh;
@@ -217,12 +221,13 @@ canvas {
         top: 10px !important;
         right: 10px !important;
     }
-    .rotateMessageImg{
+
+    .rotateMessageImg {
         visibility: visible;
     }
 
     .phoneRotation {
-        height: 100vh;
+        width: 100%;
     }
 
     h1 {
@@ -231,7 +236,6 @@ canvas {
 
     .startScreenImage {
         width: 100%;
-        height: 100%;
     }
 
     .inforStart {
@@ -240,7 +244,7 @@ canvas {
 
     .howPlay {
         width: 100%;
-        height: 200px;
+        height: 100%;
         position: absolute !important;
         font-size: 15px;
     }
@@ -250,11 +254,6 @@ canvas {
         width: 100px;
     }
 
-    .fullscreen {
-        position: absolute;
-        top: 10px !important;
-        right: 10px !important;
-    }
 }
 
 
@@ -263,22 +262,36 @@ canvas {
     h1 {
         display: none;
     }
-    .rotateMessageImg{
+
+    .rotateMessageImg {
         visibility: hidden;
         z-index: 999;
         height: 100vh;
         width: 100%;
         position: absolute;
     }
+
     .howPlay {
         width: 100%;
-        height: 200px;
+        height: 100%;
         position: absolute !important;
         font-size: 15px;
     }
+
     .positionSmartphone {
         visibility: visible;
     }
 
+    canvas {
+        height: 100%;
+    }
+
+    #fullscreen {
+        height: 100%;
+    }
+
+    .phoneRotation {
+        height: 100vh;
+    }
 
 }

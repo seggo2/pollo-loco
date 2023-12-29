@@ -14,6 +14,8 @@ class character extends MovableObject {
 
     died = false;
 
+    i = 0;
+
     images_walking = [
         ' img/2_character_pepe/2_walk/W-21.png',
         ' img/2_character_pepe/2_walk/W-22.png',
@@ -63,6 +65,18 @@ class character extends MovableObject {
         'img/2_character_pepe/1_idle/idle/I-9.png',
         'img/2_character_pepe/1_idle/idle/I-10.png',
     ];
+    sleep = [
+        'img/2_character_pepe/1_idle/long_idle/I-11.png',
+        'img/2_character_pepe/1_idle/long_idle/I-12.png',
+        'img/2_character_pepe/1_idle/long_idle/I-13.png',
+        'img/2_character_pepe/1_idle/long_idle/I-14.png',
+        'img/2_character_pepe/1_idle/long_idle/I-15.png',
+        'img/2_character_pepe/1_idle/long_idle/I-16.png',
+        'img/2_character_pepe/1_idle/long_idle/I-17.png',
+        'img/2_character_pepe/1_idle/long_idle/I-18.png',
+        'img/2_character_pepe/1_idle/long_idle/I-19.png',
+        'img/2_character_pepe/1_idle/long_idle/I-20.png',
+    ];
 
     offset = {
         top: 100,
@@ -81,6 +95,7 @@ class character extends MovableObject {
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png')
         this.loadImages(this.images_walking);
+        this.loadImages(this.sleep);
         this.loadImages(this.images_jump);
         this.loadImages(this.images_dead);
         this.loadImages(this.images_hurt);
@@ -179,8 +194,13 @@ class character extends MovableObject {
 
             if (this.World.keyboard.right || this.World.keyboard.left) {
                 this.playAnimation(this.images_walking)
+                this.i = 0;
             } else {
                 this.playAnimation(this.idle)
+                this.i += 1;
+                if (this.i > 60) {
+                    this.playAnimation(this.sleep)
+                }
             }
         }
     }

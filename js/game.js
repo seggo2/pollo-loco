@@ -8,6 +8,8 @@ background_sound = new Audio('audio/background.mp3');
 
 let startgame = false;
 
+let muted = false
+
 retry = false;
 
 /**
@@ -41,7 +43,6 @@ function startScreen() {
          <button onclick="gameStart()" class="buttonPlay">PLAY</button>
          <img  onclick="informations()" class="information"  src='img/info-803717_1280.png'>
          <img  onclick="muteBackground()" class="music"  src='img/music.png'>
-         <img class="fullScreenStart" onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>`;
 }
 
@@ -79,7 +80,9 @@ function retryScreen() {
  * id for enter fullscreeen function
  */
 function fullscreen() {
-   let element = document.getElementById('fullscreen')
+   element = document.getElementById('canvas');
+   canvas.height = '500';
+   canvas.width = '980';
    enterFullscreen(element)
 }
 
@@ -90,9 +93,9 @@ function fullscreen() {
 function enterFullscreen(element) {
    if (element.requestFullscreen) {
       element.requestFullscreen();
-   } else if (element.msRequestFullscreen) {    
+   } else if (element.msRequestFullscreen) {
       element.msRequestFullscreen();
-   } else if (element.webkitRequestFullscreen) { 
+   } else if (element.webkitRequestFullscreen) {
       element.webkitRequestFullscreen();
    }
 }
@@ -101,28 +104,41 @@ function enterFullscreen(element) {
  * exit fullscreen function
  */
 function exitFullscreen() {
-   if (document.exitFullscreen) {
-      document.exitFullscreen();
-   } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-   }
+   document = document.getElementById('canvas');
+   canvas.height = '480';
+   canvas.width = '760';
 }
 
 /**
  * mute the sound function
  */
 function mute() {
-   this.background_sound.pause()
-   world.character.mute = true;
-   world.endboss.mute = true;
-   world.mute = true;
+   if (muted == true) {
+      this.background_sound.play()
+      muted = false;
+      world.character.mute = false;
+      world.endboss.mute = false;
+      world.mute = false;
+   } else {
+      this.background_sound.pause()
+      muted = true
+      world.character.mute = true;
+      world.endboss.mute = true;
+      world.mute = true;
+   }
 }
 
 /**
  * mutes only background at start screen
  */
 function muteBackground() {
-   this.background_sound.pause()
+   if (muted == true) {
+      this.background_sound.pause()
+      muted = false;
+   } else {
+      this.background_sound.play()
+      muted = true;
+   }
 }
 /**
  * html for how to controlle the game
@@ -186,7 +202,7 @@ function start() {
    canvas.innerHTML = ` <canvas id="canvas" width="720" height="480"></canvas>
       <div class="fullscreen">
           <img class="mutePhone" onclick="mute()" src="img/music.png" alt="">
-          <img onclick="fullscreen()" src="img/fullscreen.png" alt="">
+          <img id="screenExit" onclick="fullscreen()" src="img/fullscreen.png" alt="">
       </div>
       <div  id="positionSmartphone" class="positionSmartphone">
       <div class="leftRight">
@@ -268,6 +284,9 @@ function eventlistenerPhone() {
  * keyboard press variables
  */
 window.addEventListener("keydown", (e) => {
+   if (e.keyCode ==27) {
+      exitFullscreen()
+   }
    if (e.keyCode == 37) {
       keyboard.left = true;
    }

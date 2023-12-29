@@ -15,7 +15,7 @@ class Endboss extends MovableObject {
 
     atackTouch = false;
 
-    endboss_Sound = new Audio('audio/368511_6512973-lq.mp3')
+    endboss_Sound = new Audio('audio/441364_6142149-lq.mp3')
 
     endGame = false;
 
@@ -106,6 +106,7 @@ class Endboss extends MovableObject {
             this.playAnimation(this.images_walk)
             this.speed = 22;
             this.moveLeft()
+          
             this.endboss_Sound.play();
         } else {
             this.playAnimation(this.images_alert)
