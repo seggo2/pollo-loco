@@ -42,11 +42,13 @@ class Chicken extends MovableObject {
  */
     animate() {
         setInterval(() => {
-            this.moveLeft()
-        }, 1000 / 60)
+            if (!startgame) return; // Neu: Spiel muss gestartet sein
+            this.moveLeft();
+        }, 1000 / 60);
 
         setInterval(() => {
-            this.playAnimation(this.images_walking)
+            if (!startgame) return;
+            this.playAnimation(this.images_walking);
         }, 250);
 
         setInterval(() => {

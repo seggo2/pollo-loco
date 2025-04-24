@@ -123,7 +123,7 @@ class character extends MovableObject {
 
         setInterval(() => {
             this.animationPlaying()
-        }, 60);
+        }, 120);
 
     }
     /**
